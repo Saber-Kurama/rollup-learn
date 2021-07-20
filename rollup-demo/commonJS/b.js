@@ -1,14 +1,6 @@
-// import 的用法
-// commonjs 用法 简单
-const { name } = require("./a");
-// 整体加载
-const sabername = require("./a");
-// // 别名
-// const { name: name1} = require("./a")
-// const sabername1 = require('./a')
-
-console.log("name---", name);
-console.log('saber--name', sabername)
-
-// console.log("name1---", name1);
-// console.log('saber--name1', sabername1)
+// 循环引用
+exports.done = false;
+var a = require('./a.js');
+console.log('在 b.js 之中，a.done = %j', a.done);
+exports.done = true;
+console.log('b.js 执行完毕');

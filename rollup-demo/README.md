@@ -80,15 +80,66 @@ export { foo, bar }
 * CommonJS 模块的require()是同步加载模块，ES6 模块的import命令是异步加载，有一个独立的模块依赖的解析阶段。
 
  ES6 模块与 CommonJS 模块尽量不要混用。
+##### Node.js 的模块加载方法
 
- package.json 的配置
+node 中加载 es6 模块的方式
 
- ###### 循环加载
+1. .mjs
+  Node.js 要求 ES6 模块采用`.mjs`后缀文件名。
 
- CommonJS 的加载原理
-CommonJS 的一个模块，就是一个脚本文件。require命令第一次加载该脚本，就会执行整个脚本，然后在内存生成一个对象。
+2. package.json 中的 `type`
 
+```
+{
+   "type": "module"
+}
+```
+加载 commonjs 就需要后缀 为 `.cjs` 
 
-CommonJS 模块循环加载
+3. package.json 的配置
+ 
+ package.json 的 main 字段
 
+ package.json 的 exports 字段
+ (1) 子目录别名
+ (2) main 的别名
+ (3) 条件加载
+ 打开 `--experimental-conditional-exports`
+ ```
+ {
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./main.cjs",
+      "default": "./main.js"
+    }
+  }
+}
+ ```
+4. babel
+ ##### 循环加载
+
+ ###### CommonJS 的加载原理
+ CommonJS 的一个模块，就是一个脚本文件。require命令第一次加载该脚本，就会执行整个脚本，然后在内存生成一个对象。  
+###### CommonJS 模块循环加载
+
+CommonJS 模块的重要特性是加载时执行，即脚本代码在require的时候，就会全部执行。一旦出现某个模块被"循环加载"，就只输出已经执行的部分，还未执行的部分不会输出。
+
+总之，CommonJS 输入的是被输出值的拷贝，不是引用。
+
+```
+var a = require('a'); // 安全的写法
+var foo = require('a').foo; // 危险的写法
+
+exports.good = function (arg) {
+  return a.foo('good', arg); // 使用的是 a.foo 的最新值
+};
+
+exports.bad = function (arg) {
+  return foo('bad', arg); // 使用的是一个部分加载时的值
+};
+```
+##### ES6 模块的循环加载
+
+ES6 处理“循环加载”与 CommonJS 有本质的不同。ES6 模块是动态引用，如果使用import从一个模块加载变量（即import foo from 'foo'），那些变量不会被缓存，而是成为一个指向被加载模块的引用，需要开发者自己保证，真正取值的时候能够取到值。
 
