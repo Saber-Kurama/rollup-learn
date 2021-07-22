@@ -16,3 +16,4 @@ rollup的一个学习
 [rollup-config-component](https://github.com/dword-design/rollup-config-component)
 [rollup-starter](https://github.com/kevinshu1995/rollup-starter)
 [uuklein-design-ts](https://github.com/uu-klein/uuklein-design-ts)
+[rollup 实践系列之从 0 到 1 手写 rollup](https://juejin.cn/post/6970657641559392269)
