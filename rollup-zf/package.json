@@ -4,7 +4,6 @@
   "description": "Next-generation ES6 module bundler",
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
-  "type": "module",
   "scripts": {
     "test": "mocha",
     "pretest": "npm run build",
@@ -29,6 +28,7 @@
   },
   "homepage": "https://github.com/rich-harris/rollup",
   "dependencies": {
-    "acorn": "^8.4.1"
+    "acorn": "^8.4.1",
+    "magic-string": "^0.25.7"
   }
 }
