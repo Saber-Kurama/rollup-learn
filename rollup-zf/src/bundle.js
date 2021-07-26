@@ -23,8 +23,14 @@ class Bundle {
   // 获取模块信息
   fetchModule(import_path, importer) {
     let route
-    if(!importer){ // 若没有模块导入此模块，这就是入口模块
-      route = import_path 
+    if (!importer) { // 若没有模块导入此模块，这就是入口模块
+      route = import_path;
+    } else {
+      if (path.isAbsolute(import_path)) {
+        route = import_path // 绝对路径
+      } else if (import_path[0] == '.') { // 相对路径
+        route = path.resolve(path.dirname(importer), import_path.replace(/\.js$/, '') + '.js');
+      }
     }
     if(route){
       // 读出此模块代码
