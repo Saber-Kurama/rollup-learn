@@ -8,8 +8,11 @@ export default class Bundle {
     this.entryPath = resolve( options.entry );
     console.log('this.entryPath', this.entryPath)
 
-    this.modulePromises = {}; // 模块信息
+    this.modulePromises = {}; // 模块promise 为了异步处理的
+
     this.modules = {}; // 存放所有模块和它依赖的模块
+
+    this.body = []; //这将存储我们导入的顶级AST节点
 
   }
   // 获取模块信息
@@ -19,21 +22,19 @@ export default class Bundle {
       console.log('caode', code)
       // 每一个文件都是一个模块
       const module = new Module({path, code , bundle: this})
+      this.modules[path] = module
     }
-    return this.modulePromises[ path ]
+    return this.modules[ path ]
   }
   build(){
     console.log('???xx')
     // 从入口文件的绝对路径出发找到 它的模块定义
     let entryModule = this.fetchModule(this.entryPath)
-    // 把这个入口模块所有的语句进行展开，返回所有的语句组成的数组
-    this.statements = entryModule.expandAllStatements();
-    const {code} = this.generate();
-    fs.writeFileSync(outputFileName, code, 'utf8');
+    // sequence
   }
 
   // 把this.statements生成代码
   generate() {
-    
+
   } 
 }

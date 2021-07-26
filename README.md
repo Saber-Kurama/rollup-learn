@@ -17,3 +17,4 @@ rollup的一个学习
 [rollup-starter](https://github.com/kevinshu1995/rollup-starter)
 [uuklein-design-ts](https://github.com/uu-klein/uuklein-design-ts)
 [rollup 实践系列之从 0 到 1 手写 rollup](https://juejin.cn/post/6970657641559392269)
+[抽象语法树AST介绍](http://www.goyth.com/2018/12/23/AST/#Expressions)

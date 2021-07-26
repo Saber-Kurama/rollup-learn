@@ -1,5 +1,6 @@
 
 import { parse } from 'acorn';
+import analyse from '../ast/analyse';
 
 export default class Module {
   constructor({path, code, bundle}){
@@ -12,8 +13,10 @@ export default class Module {
 			sourceType: 'module'
 		});
     console.log('this.ast', this.ast)
+    analyse(this.ast)
+    console.log('this.ast', this.ast)
   }
   expandAllStatements() {
-    
+
   }
 }
