@@ -18,3 +18,6 @@ rollup的一个学习
 [uuklein-design-ts](https://github.com/uu-klein/uuklein-design-ts)
 [rollup 实践系列之从 0 到 1 手写 rollup](https://juejin.cn/post/6970657641559392269)
 [抽象语法树AST介绍](http://www.goyth.com/2018/12/23/AST/#Expressions)
+[无用代码去哪了？项目减重之 rollup 的 Tree shaking](https://blog.csdn.net/liuyan19891230/article/details/117458064)
+[[译] 如何打造可被摇树优化的库](https://juejin.cn/post/6977334810536575013#heading-11)
+[rollup源码之plugin编写指南](https://juejin.cn/post/6964671121694146597)

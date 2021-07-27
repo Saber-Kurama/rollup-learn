@@ -76,7 +76,11 @@ var sleep = /*#__PURE__*/function () {
 }();
 
 const log = debug__default['default']('app:log');
-console.log('index----');
+let foo = () => {
+    console.log('foo 函数');
+    console.log('foo 函数222');
+};
+console.log('index----', foo);
 log('index');
 var index = {
     common,
