@@ -21,3 +21,5 @@ rollup的一个学习
 [无用代码去哪了？项目减重之 rollup 的 Tree shaking](https://blog.csdn.net/liuyan19891230/article/details/117458064)
 [[译] 如何打造可被摇树优化的库](https://juejin.cn/post/6977334810536575013#heading-11)
 [rollup源码之plugin编写指南](https://juejin.cn/post/6964671121694146597)
+[搞懂搞透 webpack 的灵魂 tapable](https://www.huaweicloud.com/articles/d360ed4f345492323cc3a11a2c84ce2a.html)
+
