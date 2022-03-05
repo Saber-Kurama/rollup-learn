@@ -1,0 +1,10 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "modules": false, // 阻止 babel 将模块转换成 Commonjs 
+      }
+    ]
+  ]
+}
