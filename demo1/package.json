@@ -1,0 +1,13 @@
+{
+  "name": "rollup-demo1",
+  "version": "0.0.0",
+  "scripts": {
+
+    "build": "rollup --config"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+      "rollup": "^2.53.2"
+  }
+}
