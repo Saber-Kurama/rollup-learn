@@ -1,5 +1,6 @@
 // 插件的一些测试
 import path from "path";
+import fs from 'fs'
 
 export default () => {
   return {
@@ -19,13 +20,16 @@ export default () => {
       // 注意这里的inputOptions是经过合并处理过后的
       // 可通过引用类型 直接修改
       // inputOptions.xx = xx
+      console.log('buildStart');
     },
     // resolveId Hook
     // resolveId Hook也是比较常用的hook，需要注意的是，如果有插件返回了值，那么后续所有插件的resolveId都不会被执行。
-    resolveId(id) {
+    resolveId(id, importer) {
       console.log("id", id);
-      const fullPath = id.replace("@", path.resolve(__dirname, "src"));
-      return id.includes(".js") ? fullPath : fullPath + ".js";
+      console.log("importer", importer);
+      console.log('__dirname', __dirname)
+      // const fullPath = id.replace("@", path.resolve(__dirname, "src"));
+      // return id.includes(".js") ? fullPath : fullPath + ".js";
       // if() => { return xx } return null
     },
     // 另一种写法
@@ -40,11 +44,13 @@ export default () => {
     // }
 
     // load hook
-    // load(id) {
-    //   // 读取文件内容
-    //   const content = fs.readFileSync(id);
-    //   return "/*这是一段注释*/" + content.toString();
-    // },
+    load(id) {
+      // 读取文件内容
+      console.log('load--', id);
+      const content = fs.readFileSync(id);
+      console.log('content--', content);
+      return "/*这是一段注释*/" + content.toString();
+    },
     // 另一个写法
     // load(id) {
     //   // 读取文件内容
